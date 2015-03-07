@@ -1,5 +1,6 @@
 package br.com.caelum.argentum.manegedbeans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,15 +11,20 @@ import org.primefaces.model.chart.ChartModel;
 import br.com.argentum.grafico.GeradorModeloGrafico;
 import br.com.caelum.argentum.modelo.Candlestick;
 import br.com.caelum.argentum.modelo.CandlestickFactory;
+import br.com.caelum.argentum.modelo.MediaMovelPonderada;
 import br.com.caelum.argentum.modelo.Negociacao;
 import br.com.caelum.argentum.modelo.SerieTemporal;
 import br.com.caelum.argentum.ws.ClienteWebService;
 
 @ManagedBean
 @ViewScoped
-public class HomeBean {
+public class HomeBean implements Serializable{
 	
-	  private List<Negociacao> negociacoes;
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<Negociacao> negociacoes;
 	  private ChartModel modeloGrafico;
 
 	  public HomeBean() {
@@ -28,7 +34,7 @@ public class HomeBean {
 
 		    GeradorModeloGrafico geradorGrafico = 
 		          new GeradorModeloGrafico(serie, 2, serie.getUltimaPosicao());
-		    geradorGrafico.plotaMediaMovelSimples();
+		    geradorGrafico.plotaMediaMovel(new MediaMovelPonderada());
 		    this.modeloGrafico = geradorGrafico.getModeloGrafico();
 	  }
 

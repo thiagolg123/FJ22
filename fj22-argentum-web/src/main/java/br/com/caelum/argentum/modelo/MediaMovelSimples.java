@@ -1,6 +1,8 @@
 package br.com.caelum.argentum.modelo;
 
-public class MediaMovelSimples {
+import br.com.argentum.grafico.Indicador;
+
+public class MediaMovelSimples implements Indicador{
 
 	public double calcula(int posicao, SerieTemporal serie) {
 		double soma = 0.0;

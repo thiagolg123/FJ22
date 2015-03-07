@@ -6,7 +6,6 @@ import org.primefaces.model.chart.ChartModel;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
-import br.com.caelum.argentum.modelo.MediaMovelSimples;
 import br.com.caelum.argentum.modelo.SerieTemporal;
 
 public class GeradorModeloGrafico implements Serializable{
@@ -29,8 +28,7 @@ public class GeradorModeloGrafico implements Serializable{
 		this.modeloGrafico.setLegendPosition("e");
 	}
 
-	public void plotaMediaMovelSimples() {
-		MediaMovelSimples indicador = new MediaMovelSimples();
+	public void plotaMediaMovel(Indicador indicador) {
 		LineChartSeries chartSerie = new LineChartSeries("fechamento");
 
 		for (int i = comeco; i <= fim; i++) {
